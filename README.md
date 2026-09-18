@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="icon128.png" width="128" alt="ChatGPT Completion Sound logo">
+</p>
+
 # ChatGPT Completion Sound
 
 A lightweight Chrome/Edge extension that plays `potion.wav` when a ChatGPT response finishes and can show a silent Windows notification.

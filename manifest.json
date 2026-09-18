@@ -1,7 +1,7 @@
-﻿{
+{
   "manifest_version": 3,
   "name": "ChatGPT Completion Sound",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Plays potion.wav and shows a silent notification when a ChatGPT tab finishes generating.",
   "permissions": ["storage", "offscreen", "notifications"],
   "host_permissions": ["https://chatgpt.com/*"],
@@ -17,4 +17,3 @@
   },
   "icons": { "128": "icon128.png" }
 }
-
