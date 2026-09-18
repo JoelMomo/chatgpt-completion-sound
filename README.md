@@ -54,6 +54,12 @@ Download the newer Release, replace the old extracted folder, then click **Reloa
 
 This is an unpacked browser extension, so Developer mode must remain enabled. If ChatGPT changes its web interface, the completion detector may need an update.
 
+## Contributing
+
+Bug reports, feature ideas and focused pull requests are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) before opening one.
+
+For security or privacy-sensitive reports, follow [SECURITY.md](SECURITY.md) instead of posting details publicly.
+
 <div align="center">
 
 ## Support development
