@@ -8,6 +8,7 @@ const VALID_SOUNDS = new Set([
   "page-turn",
   "windows"
 ]);
+
 const lastFinishedByTab = new Map();
 const notificationTabs = new Map();
 
@@ -18,6 +19,7 @@ async function getSettings() {
   const volume = Number.isFinite(volumeValue)
     ? Math.max(0, Math.min(1, volumeValue))
     : DEFAULTS.volume;
+
   return { sound, volume };
 }
 
@@ -25,11 +27,13 @@ function cleanTitle(title) {
   const value = String(title || "")
     .replace(/\s+(?:-|–|—)\s+ChatGPT\s*$/i, "")
     .trim();
+
   return value && value.toLowerCase() !== "chatgpt" ? value : "ChatGPT";
 }
 
 async function ensureOffscreen() {
   let exists = false;
+
   if (chrome.offscreen.hasDocument) {
     exists = await chrome.offscreen.hasDocument();
   } else {
@@ -38,6 +42,7 @@ async function ensureOffscreen() {
     });
     exists = contexts.length > 0;
   }
+
   if (!exists) {
     await chrome.offscreen.createDocument({
       url: "offscreen.html",
@@ -49,7 +54,7 @@ async function ensureOffscreen() {
 
 async function play(sound, volume) {
   await ensureOffscreen();
-  chrome.runtime.sendMessage({
+  await chrome.runtime.sendMessage({
     target: "offscreen",
     type: "play",
     sound,
@@ -59,9 +64,11 @@ async function play(sound, volume) {
 
 async function notify(tabId, title, silent) {
   const id = `chatgpt-finished-${tabId ?? "x"}-${Date.now()}`;
+
   if (tabId !== null && tabId !== undefined) {
     notificationTabs.set(id, tabId);
   }
+
   await chrome.notifications.create(id, {
     type: "basic",
     iconUrl: chrome.runtime.getURL("icon128.png"),
@@ -75,10 +82,12 @@ async function notify(tabId, title, silent) {
 
 async function runAlert(tabId, title) {
   const settings = await getSettings();
+
   if (settings.sound === "windows") {
     await notify(tabId, title, false);
     return;
   }
+
   await play(settings.sound, settings.volume);
   await notify(tabId, title, true);
 }
@@ -86,22 +95,47 @@ async function runAlert(tabId, title) {
 async function finished(message, sender) {
   const tabId = sender.tab?.id ?? null;
   const now = Date.now();
+
   if (tabId !== null && now - (lastFinishedByTab.get(tabId) || 0) < 3000) {
     return;
   }
+
   if (tabId !== null) {
     lastFinishedByTab.set(tabId, now);
   }
+
   await runAlert(tabId, message.title || sender.tab?.title);
+}
+
+async function activateOpenChatTabs() {
+  let tabs = [];
+
+  try {
+    tabs = await chrome.tabs.query({ url: "https://chatgpt.com/*" });
+  } catch {
+    return;
+  }
+
+  await Promise.allSettled(
+    tabs
+      .filter((tab) => Number.isInteger(tab.id))
+      .map((tab) =>
+        chrome.scripting.executeScript({
+          target: { tabId: tab.id },
+          files: ["content.js"]
+        })
+      )
+  );
 }
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message?.type === "chatgpt-finished") {
-    finished(message, sender);
+    finished(message, sender).catch(() => {});
     return;
   }
+
   if (message?.type === "test-alert") {
-    runAlert(null, "This is a test");
+    runAlert(null, "This is a test").catch(() => {});
     sendResponse({ ok: true });
     return true;
   }
@@ -110,11 +144,13 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 chrome.notifications.onClicked.addListener(async (id) => {
   const tabId = notificationTabs.get(id);
   if (tabId === undefined) return;
+
   try {
     const tab = await chrome.tabs.get(tabId);
     await chrome.windows.update(tab.windowId, { focused: true });
     await chrome.tabs.update(tabId, { active: true });
   } catch {}
+
   chrome.notifications.clear(id);
 });
 
@@ -124,9 +160,12 @@ chrome.notifications.onClosed.addListener((id) => {
 
 chrome.tabs.onRemoved.addListener((tabId) => {
   lastFinishedByTab.delete(tabId);
+
   for (const [id, mappedTabId] of notificationTabs) {
     if (mappedTabId === tabId) {
       notificationTabs.delete(id);
     }
   }
 });
+
+activateOpenChatTabs();
