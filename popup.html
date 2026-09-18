@@ -7,7 +7,7 @@
 body{font:14px system-ui,sans-serif;width:270px;margin:0;padding:16px;background:#151515;color:#f2f2f2}
 h1{font-size:16px;margin:0 0 14px}.row{display:flex;align-items:center;justify-content:space-between;margin:12px 0;gap:12px}
 input[type=range]{width:130px}.buttons{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}
-button{padding:9px;border:0;border-radius:8px;cursor:pointer}small{display:block;color:#aaa;margin-top:10px;line-height:1.35}
+button{padding:9px;border:0;border-radius:8px;cursor:pointer}small{display:block;color:#aaa;margin-top:10px;line-height:1.35}.footer{margin-top:14px;padding-top:12px;border-top:1px solid #2b2b2b;text-align:center}.footer a{color:#cfcfcf;text-decoration:none;font-size:12px}.footer a:hover{color:#fff;text-decoration:underline}
 </style>
 </head>
 <body>
@@ -17,6 +17,7 @@ button{padding:9px;border:0;border-radius:8px;cursor:pointer}small{display:block
 <label class="row"><span>Volume</span><input id="volume" type="range" min="0" max="1" step="0.05"></label>
 <div class="buttons"><button id="test">Test sound</button><button id="testNotify">Test notification</button></div>
 <small>Each ChatGPT tab is tracked independently. Clicking a completion notification opens that chat.</small>
+<div class="footer"><a href="https://joelmomo.github.io/#support" target="_blank" rel="noreferrer">More apps &amp; support ↗</a></div>
 <script src="popup.js"></script>
 </body>
 </html>
