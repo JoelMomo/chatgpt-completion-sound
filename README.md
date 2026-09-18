@@ -52,8 +52,21 @@ Download the newer Release, replace the old extracted folder, then click **Reloa
 
 This is an unpacked browser extension, so Developer mode must remain enabled. If ChatGPT changes its web interface, the completion detector may need an update.
 
+<div align="center">
+
 ## Support development
 
-These projects are free to use and developed in my spare time. If they've been useful to you, you can support future development through [GitHub Sponsors](https://github.com/sponsors/JoelMomo) or leave a [one-time tip on Ko-fi](https://ko-fi.com/joelmomodev).
+These projects are free to use and developed in my spare time. If they've been useful to you, you can help support future development.
 
-All projects remain free regardless of support.
+<p>
+  <a href="https://github.com/sponsors/JoelMomo">
+    <img src="https://img.shields.io/badge/GitHub%20Sponsors-Sponsor-EA4AAA?style=for-the-badge&logo=githubsponsors&logoColor=white" alt="Sponsor on GitHub">
+  </a>
+  <a href="https://ko-fi.com/joelmomodev">
+    <img src="https://img.shields.io/badge/Ko--fi-One--time%20tip-FF5E5B?style=for-the-badge&logo=kofi&logoColor=white" alt="Leave a tip on Ko-fi">
+  </a>
+</p>
+
+<sub>All projects remain free regardless of support.</sub>
+
+</div>
