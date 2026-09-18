@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "ChatGPT Completion Sound",
-  "version": "0.2.2",
-  "description": "Plays potion.wav and shows a silent notification when a ChatGPT tab finishes generating.",
+  "version": "0.3.0",
+  "description": "Choose a completion sound or use Windows notifications when ChatGPT finishes responding.",
   "permissions": ["storage", "offscreen", "notifications"],
   "host_permissions": ["https://chatgpt.com/*"],
   "background": { "service_worker": "background.js" },

@@ -1,23 +1,69 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>ChatGPT Completion Sound</title>
 <style>
-body{font:14px system-ui,sans-serif;width:270px;margin:0;padding:16px;background:#151515;color:#f2f2f2}
-h1{font-size:16px;margin:0 0 14px}.row{display:flex;align-items:center;justify-content:space-between;margin:12px 0;gap:12px}
-input[type=range]{width:130px}.buttons{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}
-button{padding:9px;border:0;border-radius:8px;cursor:pointer}small{display:block;color:#aaa;margin-top:10px;line-height:1.35}.footer{margin-top:14px;padding-top:12px;border-top:1px solid #2b2b2b;text-align:center}.footer a{color:#cfcfcf;text-decoration:none;font-size:12px}.footer a:hover{color:#fff;text-decoration:underline}
+:root{color-scheme:dark;--bg:#0d1118;--panel:#151b24;--line:#293241;--text:#f4f7fb;--muted:#98a5b8;--cyan:#58e7dc;--blue:#56b9ff}
+*{box-sizing:border-box}
+body{width:300px;margin:0;padding:18px;font:14px/1.35 system-ui,-apple-system,"Segoe UI",sans-serif;background:radial-gradient(circle at 90% 0,#153448 0,transparent 42%),var(--bg);color:var(--text)}
+.header{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+.logo{width:42px;height:42px;border-radius:12px;box-shadow:0 8px 24px #0008}
+h1{font-size:16px;margin:0}
+.sub{font-size:12px;color:var(--muted);margin-top:2px}
+.card{padding:14px;border:1px solid var(--line);border-radius:14px;background:#111821cc}
+label{display:block;font-size:12px;font-weight:700;color:#cbd5e1;margin-bottom:7px}
+select{width:100%;padding:10px 11px;border:1px solid #364256;border-radius:10px;background:var(--panel);color:var(--text);outline:none}
+select:focus{border-color:var(--cyan)}
+.row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:14px}
+.row label{margin:0}
+input[type=range]{width:145px;accent-color:var(--cyan)}
+.hint{min-height:32px;margin:10px 0 0;color:var(--muted);font-size:12px}
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:14px}
+button,.support{display:flex;align-items:center;justify-content:center;min-height:39px;border-radius:10px;font-weight:750;text-decoration:none;cursor:pointer}
+button{border:1px solid #364256;background:#182130;color:var(--text)}
+button:hover{background:#202c3d}
+.support{border:0;color:#061218;background:linear-gradient(135deg,var(--cyan),var(--blue));box-shadow:0 9px 28px #32cfe52a}
+.support:hover{filter:brightness(1.07)}
+.footer{margin-top:12px;text-align:center;color:#6f7e92;font-size:11px}
 </style>
 </head>
 <body>
-<h1>Completion Alerts</h1>
-<label class="row"><span>Sound</span><input id="enabled" type="checkbox"></label>
-<label class="row"><span>Notifications</span><input id="notify" type="checkbox"></label>
-<label class="row"><span>Volume</span><input id="volume" type="range" min="0" max="1" step="0.05"></label>
-<div class="buttons"><button id="test">Test sound</button><button id="testNotify">Test notification</button></div>
-<small>Each ChatGPT tab is tracked independently. Clicking a completion notification opens that chat.</small>
-<div class="footer"><a href="https://joelmomo.github.io/#support" target="_blank" rel="noreferrer">More apps &amp; support ↗</a></div>
+<div class="header">
+  <img class="logo" src="icon128.png" alt="">
+  <div>
+    <h1>Completion Sound</h1>
+    <div class="sub">Choose what you hear when ChatGPT finishes.</div>
+  </div>
+</div>
+
+<div class="card">
+  <label for="sound">Alert sound</label>
+  <select id="sound">
+    <option value="pop">Pop</option>
+    <option value="cash-register">Cash Register</option>
+    <option value="chan">Chan</option>
+    <option value="potion">Potion</option>
+    <option value="point">Point</option>
+    <option value="page-turn">Page Turn</option>
+    <option value="windows">Windows notifications</option>
+  </select>
+
+  <div class="row" id="volumeRow">
+    <label for="volume">Volume</label>
+    <input id="volume" type="range" min="0" max="1" step="0.05">
+  </div>
+
+  <p class="hint" id="hint"></p>
+
+  <div class="actions">
+    <button id="test" type="button">Test alert</button>
+    <a class="support" href="https://joelmomo.github.io/#support" target="_blank" rel="noreferrer">Support</a>
+  </div>
+</div>
+
+<div class="footer">Each ChatGPT tab is tracked independently.</div>
 <script src="popup.js"></script>
 </body>
 </html>

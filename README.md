@@ -6,9 +6,23 @@
 
 [![Latest release](https://img.shields.io/github/v/release/JoelMomo/chatgpt-completion-sound?style=flat-square)](https://github.com/JoelMomo/chatgpt-completion-sound/releases) [![Apps & tools](https://img.shields.io/badge/Apps%20%26%20tools-Browse-6F8F72?style=flat-square)](https://joelmomo.github.io/)
 
-A lightweight Chrome/Edge extension that plays `potion.wav` when a ChatGPT response finishes and can show a silent Windows notification.
+A lightweight Chrome/Edge extension that alerts you when a ChatGPT response finishes.
 
-It tracks each ChatGPT tab independently, queues sounds if several chats finish close together, and ignores manual Stop/Cancel actions.
+It tracks each ChatGPT tab independently, queues custom sounds if several chats finish close together, and ignores manual Stop/Cancel actions.
+
+## Alert sounds
+
+The extension includes:
+
+- **Pop** - default
+- **Cash Register**
+- **Chan**
+- **Potion**
+- **Point**
+- **Page Turn**
+- **Windows notifications** - uses the standard Windows notification sound instead of a bundled WAV
+
+When a bundled sound is selected, the Windows completion notification remains visible but silent so the two sounds do not overlap.
 
 ## Install
 
@@ -18,7 +32,7 @@ It tracks each ChatGPT tab independently, queues sounds if several chats finish 
 2. Open `edge://extensions/`.
 3. Enable **Developer mode**.
 4. Click **Load unpacked**.
-5. Select the extracted folder — the one containing `manifest.json`.
+5. Select the extracted folder containing `manifest.json`.
 6. Reload any ChatGPT tabs that were already open.
 
 ### Google Chrome
@@ -32,15 +46,11 @@ It tracks each ChatGPT tab independently, queues sounds if several chats finish 
 
 ## Usage
 
-Click the extension icon to:
+Click the extension icon, choose an alert sound, set the volume and use **Test alert** to preview it.
 
-- enable or disable the completion sound;
-- enable or disable completion notifications;
-- change the sound volume;
-- test the sound;
-- test the notification.
+The **Support** button opens the project's support page, where you can use GitHub Sponsors or Ko-fi.
 
-Completion notifications are intentionally **silent**, so Windows does not play a second sound over `potion.wav`. Clicking a completion notification focuses the ChatGPT tab that finished.
+Clicking a completion notification focuses the ChatGPT tab that finished.
 
 ## Privacy
 
