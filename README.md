@@ -10,6 +10,14 @@ A lightweight Chrome/Edge extension that alerts you when a ChatGPT response fini
 
 It tracks each ChatGPT tab independently, queues custom sounds if several chats finish close together, and ignores manual Stop/Cancel actions.
 
+## Preview
+
+<p align="center">
+  <img src="docs/images/completion-sound-popup.png" width="320" alt="ChatGPT Completion Sound popup preview">
+</p>
+
+A simple popup to choose the alert sound, adjust volume, test alerts, and access support links.
+
 ## Alert sounds
 
 The extension includes:
