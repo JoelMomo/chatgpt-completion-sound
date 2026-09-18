@@ -1,0 +1,54 @@
+name: Bug report
+description: Report a reproducible problem with the extension.
+title: "[Bug] "
+body:
+  - type: input
+    id: browser
+    attributes:
+      label: Browser and version
+      placeholder: e.g. Microsoft Edge 153
+    validations:
+      required: true
+  - type: input
+    id: extension
+    attributes:
+      label: Extension version or release
+      placeholder: e.g. latest release
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: What is affected?
+      options:
+        - Completion sound
+        - Windows notification
+        - Volume / settings
+        - Multiple ChatGPT tabs
+        - Notification click behavior
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true
+  - type: textarea
+    id: extra
+    attributes:
+      label: Anything else?
+      description: Do not paste private ChatGPT conversation content.
