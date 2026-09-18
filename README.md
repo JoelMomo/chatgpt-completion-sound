@@ -4,6 +4,8 @@
 
 # ChatGPT Completion Sound
 
+[![Latest release](https://img.shields.io/github/v/release/JoelMomo/chatgpt-completion-sound?style=flat-square)](https://github.com/JoelMomo/chatgpt-completion-sound/releases) [![Apps & tools](https://img.shields.io/badge/Apps%20%26%20tools-Browse-6F8F72?style=flat-square)](https://joelmomo.github.io/)
+
 A lightweight Chrome/Edge extension that plays `potion.wav` when a ChatGPT response finishes and can show a silent Windows notification.
 
 It tracks each ChatGPT tab independently, queues sounds if several chats finish close together, and ignores manual Stop/Cancel actions.
