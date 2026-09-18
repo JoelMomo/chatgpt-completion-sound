@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>ChatGPT Completion Sound</title>
+<style>
+body{font:14px system-ui,sans-serif;width:270px;margin:0;padding:16px;background:#151515;color:#f2f2f2}
+h1{font-size:16px;margin:0 0 14px}.row{display:flex;align-items:center;justify-content:space-between;margin:12px 0;gap:12px}
+input[type=range]{width:130px}.buttons{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}
+button{padding:9px;border:0;border-radius:8px;cursor:pointer}small{display:block;color:#aaa;margin-top:10px;line-height:1.35}
+</style>
+</head>
+<body>
+<h1>Completion Alerts</h1>
+<label class="row"><span>Sound</span><input id="enabled" type="checkbox"></label>
+<label class="row"><span>Notifications</span><input id="notify" type="checkbox"></label>
+<label class="row"><span>Volume</span><input id="volume" type="range" min="0" max="1" step="0.05"></label>
+<div class="buttons"><button id="test">Test sound</button><button id="testNotify">Test notification</button></div>
+<small>Each ChatGPT tab is tracked independently. Clicking a completion notification opens that chat.</small>
+<script src="popup.js"></script>
+</body>
+</html>
